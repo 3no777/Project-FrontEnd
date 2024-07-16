@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+  <header>
+    <h1>Your Shopping Cart</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+    </nav>
+  </header>
+
+  <section id="cart" class="section">
+    <div class="cart-container">
+      <h2>Cart Items</h2>
+      <div id="cartItems"></div>
+      <div id="totalPrice"></div>
+      <button onclick="checkout()">Checkout</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Your Men's Clothing Store. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const product = params.get('product');
+      const price = params.get('price');
+
+      if (product && price) {
+        const cartItems = document.getElementById('cartItems');
+        const totalPrice = document.getElementById('totalPrice');
+        
+        cartItems.innerHTML = `
+          <p>Product: ${product}</p>
+          <p>Price: $${price}</p>
+        `;
+
+        totalPrice.innerHTML = `
+          <h3>Total: $${price}</h3>
+        `;
+      }
+    });
+
+    function checkout() {
+      alert('Proceeding to checkout...');
+    }
+  </script>
+
+</body>
+</html>
